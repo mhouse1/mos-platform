@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <default sync-j="5" revision="kirkstone"/>
+  <remote fetch="https://git.yoctoproject.org/git" name="yocto"/>
+  <remote fetch="https://github.com/agherzan" name="agherzan"/>
+  <remote fetch="https://github.com/openembedded" name="oe"/>
+  <remote fetch="https://github.com/meta-qt5" name="qt5"/>
+  <remote fetch="https://github.com/mhouse1" name="mhouse1"/>
+  <remote fetch="https://github.com/rauc" name="rauc"/>
+  <remote fetch="https://github.com/leon-anavi" name="anavi"/>
+
+  <project remote="yocto" revision="kirkstone" name="poky" path="sources/poky"/>
+  <project remote="oe" revision="kirkstone" name="meta-openembedded" path="sources/meta-openembedded"/>
+  <project remote="qt5" revision="kirkstone" name="meta-qt5" path="sources/meta-qt5"/>
+  <project remote="yocto" revision="kirkstone" name="meta-security" path="sources/meta-security"/>
+  <!-- <project remote="yocto" revision="kirkstone" name="meta-raspberrypi" path="sources/meta-raspberrypi"/> -->
+  <project remote="agherzan" revision="kirkstone" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
+  <project remote="mhouse1" revision="kirkstone" name="meta-cm4" path="sources/meta-cm4"/>
+  <project remote="rauc" revision="kirkstone" name="meta-rauc" path="sources/meta-rauc"/>
+  <project remote="anavi" revision="kirkstone" name="meta-rauc-community" path="sources/meta-rauc-community"/>
+</manifest>
