@@ -4,6 +4,7 @@ REPODIR=${PWD}
 
 echo $REPODIR
 
+# First time we run source command is so it can copy the latest layer.conf files to build location
 source sources/poky/oe-init-build-env build
 
 cat <<EOF > conf/bblayers.conf
@@ -32,3 +33,5 @@ BBLAYERS ?= " \\
 EOF
 
 cp ../sources/meta-cm4/conf/local.conf.sample conf/local.conf
+# we source again so bitbake and env is ready
+source sources/poky/oe-init-build-env build

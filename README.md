@@ -47,13 +47,12 @@ Then we create a symlink to it: sudo ln -s /usr/bin/python3 /usr/bin/python
 To download this repo and all the dependencies listed in the default.xml, you need to have `repo` installed 
 
 * Note: the repo utility must be install using curl command shown below , but if you decide too use apt to install repo besure to point it to ~/bin/repo
-
-[source,console]
-$: mkdir ~/bin
-$: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-$: chmod a+x ~/bin/repo
-$: PATH=${PATH}:~/bin
-
+```
+mkdir ~/bin
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+PATH=${PATH}:~/bin
+```
 If you have not done so, set your git account's identity
 ```
 git config --global user.email michaelhousera@gmail.com
@@ -62,12 +61,12 @@ git config --global user.name mhouse1
 
 
 Download MOS platform and sources listed in the default.xml file to a new project folder:
-
-[source,console]
-$: mkdir mos1
-$: cd mos1
-$: repo init -u https://github.com/mhouse1/mos-platform -b <my_branch_name>
-$: repo sync
+```
+mkdir mos1
+cd mos1
+repo init -u https://github.com/mhouse1/mos-platform -b <my_branch_name>
+repo sync
+```
 
 At the end of the commands you have every metadata you need to start work with.
 The source code is checked out at `mos1/sources`.
@@ -87,9 +86,10 @@ Afterwards you may want to edit the build/conf/local.conf
 
 To start a simple image build:
 
-[source,console]
-$: source sources/poky/oe-init-build-env build
-$: bitbake console-image
+```
+source sources/poky/oe-init-build-env build
+bitbake console-image
+```
 
 Other images:
 
@@ -104,6 +104,14 @@ Other images:
 * qt5-basic-image
 * qt5-image
 
+# Making changes
+If you make changes to a layer or the default.xml file run these commands to update to new files and build again.
+
+```
+repo sync
+.repo/manifests/setup
+bitbake console-image
+```
 # clean build
 If you modify the default.xml file you may want to do a clean build to pull new repo's and sources before building
 ```
