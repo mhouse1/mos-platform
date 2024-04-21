@@ -112,6 +112,16 @@ repo sync
 .repo/manifests/setup
 bitbake console-image
 ```
+
+## Troubleshooting
+you might get an error `.repo/manifests: contains uncommited changes` , this happens if you've modified the mos-platform locally. In this case you can either reset the changes 
+
+```
+cd .repo/manifets
+git reset --hard
+```
+or you can branch and push the changes up
+
 # clean build
 If you modify the default.xml file you may want to do a clean build to pull new repo's and sources before building
 ```
