@@ -33,5 +33,3 @@ BBLAYERS ?= " \\
 EOF
 
 cp ../sources/meta-cm4/conf/local.conf.sample conf/local.conf
-# we source again so bitbake and env is ready
-source sources/poky/oe-init-build-env build
