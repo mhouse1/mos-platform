@@ -133,6 +133,11 @@ bitbake -c cleanall qt5-image
 bitbake qt5-image
 ```
 
+# copying files from vbox to host (windows)
+* in vbox Devices > Shared Folders > Shared Folders Settings > mount the folder you want from windows
+* this mounts it with root permission so in ubuntu open terminal and su as root
+* run cp command to copy file from vbox to windows, for example: cp /home/terrafirma/dev-tools/mos/build/tmp/deploy/images/raspberrypi4-64/console-image-raspberrypi4-64.rpi-sdimg /media/sf_Downloads/console-image-raspberrypi4-64.rpi-sdimg
+
 
 # Flashing the sd image
 
@@ -153,3 +158,10 @@ sudo dd if=/home/username/Downloads/mhouseos.rpi-sdimg of=/dev/sdb status=progre
 rootfs is not image. It is tar archive with content of root filesystem and you are supposed to prepare bootloader and kernel on your SD card yourself and configure them to use root partition.
 
 ```
+
+## flash using windows
+it is faster to transfer the file from ubuntu to windows host and then use etcher to perform flashing.
+* set compute module to boot mode, connect to pc then run rpiboot.exe
+* flash the rpi-sdimg file using etcher (portable install balenaEtcher-Portable-1.18.11.exe works too).
+
+
