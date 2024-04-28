@@ -32,4 +32,4 @@ BBLAYERS ?= " \\
 "
 EOF
 
-cp ../sources/meta-cm4/conf/local.conf.sample conf/local.conf
+cp ../sources/meta-rpi64/conf/local.conf.sample conf/local.conf
