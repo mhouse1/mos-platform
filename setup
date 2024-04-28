@@ -26,7 +26,7 @@ BBLAYERS ?= " \\
     ${REPODIR}/sources/meta-qt5 \\
     ${REPODIR}/sources/meta-raspberrypi \\
     ${REPODIR}/sources/meta-security \\
-    ${REPODIR}/sources/meta-cm4 \\
+    ${REPODIR}/sources/meta-rpi64 \\
     ${REPODIR}/sources/meta-rauc \\
     ${REPODIR}/sources/meta-rauc-community/meta-rauc-raspberrypi \\
 "
