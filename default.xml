@@ -13,12 +13,13 @@
 
   <project remote="yocto" revision="76180110391373ce9ff6ecb8dc8d986784f75c13" name="poky" path="sources/poky"/>
   <project remote="oe" revision="dunfell" name="meta-openembedded" path="sources/meta-openembedded"/>
-  <project remote="qt5" revision="5ef3a0ffd3324937252790266e2b2e64d33ef34f" name="meta-qt5" path="sources/meta-qt5"/>
-  <project remote="yocto" revision="c62970fda82acf75035243766ecd195243e0f82a" name="meta-security" path="sources/meta-security"/>
-  <project remote="yocto" revision="2081e1bb9a44025db7297bfd5d024977d42191ed" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
-  <project remote="jumpnow" revision="b3995636741be0d219a50035c98ded8b48590888" name="meta-jumpnow" path="sources/meta-jumpnow"/>
+  <project remote="qt5" revision="dunfell" name="meta-qt5" path="sources/meta-qt5"/>
+  <project remote="yocto" revision="dunfell" name="meta-security" path="sources/meta-security"/>
+  <project remote="yocto" revision="dunfell" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
+  <project remote="jumpnow" revision="dunfell" name="meta-jumpnow" path="sources/meta-jumpnow"/>
   <!-- <project remote="mhouse1" revision="e55402441790512ce1ad145976a821617dae9188" name="meta-rpi64" path="sources/meta-rpi64"/> -->
-  <project remote="mhouse1" revision="c3a83d373eac2a4cd7f15894d0e33f0a2af47f56" name="meta-rpi64" path="sources/meta-rpi64"/>
+  <project remote="mhouse1" revision="dunfell" name="meta-rpi64" path="sources/meta-rpi64"/>
   <project remote="rauc" revision="dunfell" name="meta-rauc" path="sources/meta-rauc"/>
   <project remote="anavi" revision="dunfell" name="meta-rauc-community" path="sources/meta-rauc-community"/>
 </manifest>
+
