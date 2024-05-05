@@ -16,14 +16,20 @@ Custom Minimal OS (MOS) built using Yocto for the Raspberry Pi Compute Module 4
 * A series of packages must be installed to support the Yocto build
 ```
 sudo apt-get update
-sudo apt install git python3 gawk wget diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm autoconf libtool libglib2.0-dev libarchive-dev sed cvs subversion coreutils texi2html docbook-utils help2man make gcc g++ desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial automake groff curl lzop asciidoc u-boot-tools dos2unix mtd-utils pv libncurses5 libncurses5-dev libncursesw5-dev libelf-dev zlib1g-dev
+sudo apt install git python3 gawk wget diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm autoconf libtool libglib2.0-dev libarchive-dev sed cvs subversion coreutils texi2html docbook-utils help2man make gcc g++ desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial automake groff curl lzop asciidoc u-boot-tools dos2unix mtd-utils pv libelf-dev zlib1g-dev
 ```
-
-for kirkstone
+for kirkstone, dunfell on ubuntu 24.04
 ```
 sudo apt-get update
 sudo apt-get -y install lz4
 ```
+
+### Using ubuntu 24.04
+* 05/05/24 started building using 24.04 LTS (Noble Numbat)
+* libncurses5-dev libncursesw5-dev is not availe on 24.04
+* Ubuntu OS included python 3.12.3 
+
+
 
 ## Installing python3
 ```
@@ -64,16 +70,17 @@ Download MOS platform and sources listed in the default.xml file to a new projec
 ```
 mkdir mos1
 cd mos1
-repo init -u https://github.com/mhouse1/mos-platform -b <my_branch_name>
+repo init -u https://github.com/mhouse1/mos-platform -b dunfell
 repo sync
 ```
 
 At the end of the commands you have every metadata you need to start work with.
 The source code is checked out at `mos1/sources`.
 You can use any directory to host your build.
-As a personal favor I'm using `mos1/build` as build folder.
+I'm using `mos1/build` as build folder.
 
 To configure the build and use local.conf.sample to replace the local.conf:
+note: may not need to chmod setup file if cloning recent source with proper setup file mode
 ```
 chmod a+x .repo/manifests/setup
 .repo/manifests/setup

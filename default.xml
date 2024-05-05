@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <default sync-j="5" revision="kirkstone"/>
+
+  <default sync-j="5" revision="dunfell"/>
+
   <remote fetch="https://git.yoctoproject.org/git" name="yocto"/>
-  <remote fetch="https://github.com/agherzan" name="agherzan"/>
   <remote fetch="https://github.com/openembedded" name="oe"/>
   <remote fetch="https://github.com/meta-qt5" name="qt5"/>
+  <remote fetch="https://github.com/jumpnow" name="jumpnow"/>
   <remote fetch="https://github.com/mhouse1" name="mhouse1"/>
   <remote fetch="https://github.com/rauc" name="rauc"/>
   <remote fetch="https://github.com/leon-anavi" name="anavi"/>
 
-  <project remote="yocto" revision="kirkstone" name="poky" path="sources/poky"/>
-  <project remote="oe" revision="kirkstone" name="meta-openembedded" path="sources/meta-openembedded"/>
-  <project remote="qt5" revision="kirkstone" name="meta-qt5" path="sources/meta-qt5"/>
-  <project remote="yocto" revision="kirkstone" name="meta-security" path="sources/meta-security"/>
-  <!-- <project remote="yocto" revision="kirkstone" name="meta-raspberrypi" path="sources/meta-raspberrypi"/> -->
-  <project remote="agherzan" revision="kirkstone" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
-  <project remote="mhouse1" revision="0023714dc133a654eb89b3caff974796f68de4c6" name="meta-rpi64" path="sources/meta-rpi64"/>
-  <project remote="rauc" revision="kirkstone" name="meta-rauc" path="sources/meta-rauc"/>
-  <project remote="anavi" revision="kirkstone" name="meta-rauc-community" path="sources/meta-rauc-community"/>
+  <project remote="yocto" revision="76180110391373ce9ff6ecb8dc8d986784f75c13" name="poky" path="sources/poky"/>
+  <project remote="oe" revision="dunfell" name="meta-openembedded" path="sources/meta-openembedded"/>
+  <project remote="qt5" revision="5ef3a0ffd3324937252790266e2b2e64d33ef34f" name="meta-qt5" path="sources/meta-qt5"/>
+  <project remote="yocto" revision="c62970fda82acf75035243766ecd195243e0f82a" name="meta-security" path="sources/meta-security"/>
+  <project remote="yocto" revision="2081e1bb9a44025db7297bfd5d024977d42191ed" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
+  <project remote="jumpnow" revision="b3995636741be0d219a50035c98ded8b48590888" name="meta-jumpnow" path="sources/meta-jumpnow"/>
+  <!-- <project remote="mhouse1" revision="e55402441790512ce1ad145976a821617dae9188" name="meta-rpi64" path="sources/meta-rpi64"/> -->
+  <project remote="mhouse1" revision="c3a83d373eac2a4cd7f15894d0e33f0a2af47f56" name="meta-rpi64" path="sources/meta-rpi64"/>
+  <project remote="rauc" revision="dunfell" name="meta-rauc" path="sources/meta-rauc"/>
+  <project remote="anavi" revision="dunfell" name="meta-rauc-community" path="sources/meta-rauc-community"/>
 </manifest>
