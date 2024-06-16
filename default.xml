@@ -8,8 +8,6 @@
   <remote fetch="https://github.com/meta-qt5" name="qt5"/>
   <remote fetch="https://github.com/jumpnow" name="jumpnow"/>
   <remote fetch="https://github.com/mhouse1" name="mhouse1"/>
-  <remote fetch="https://github.com/rauc" name="rauc"/>
-  <remote fetch="https://github.com/leon-anavi" name="anavi"/>
 
   <project remote="yocto" revision="76180110391373ce9ff6ecb8dc8d986784f75c13" name="poky" path="sources/poky"/>
   <project remote="oe" revision="dunfell" name="meta-openembedded" path="sources/meta-openembedded"/>
@@ -17,9 +15,7 @@
   <project remote="yocto" revision="dunfell" name="meta-security" path="sources/meta-security"/>
   <project remote="yocto" revision="dunfell" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
   <project remote="jumpnow" revision="dunfell" name="meta-jumpnow" path="sources/meta-jumpnow"/>
+  <!-- added pytest packages to python3 install -->
   <!-- <project remote="mhouse1" revision="e55402441790512ce1ad145976a821617dae9188" name="meta-rpi64" path="sources/meta-rpi64"/> -->
-  <project remote="mhouse1" revision="dunfell" name="meta-rpi64" path="sources/meta-rpi64"/>
-  <project remote="rauc" revision="dunfell" name="meta-rauc" path="sources/meta-rauc"/>
-  <project remote="anavi" revision="dunfell" name="meta-rauc-community" path="sources/meta-rauc-community"/>
+  <project remote="mhouse1" revision="e55402441790512ce1ad145976a821617dae9188" name="meta-rpi64" path="sources/meta-rpi64"/>
 </manifest>
-
