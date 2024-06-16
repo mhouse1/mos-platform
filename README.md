@@ -145,6 +145,21 @@ bitbake qt5-image
 * this mounts it with root permission so in ubuntu open terminal and su as root
 * run cp command to copy file from vbox to windows, for example: cp /home/terrafirma/dev-tools/mos/build/tmp/deploy/images/raspberrypi4-64/console-image-raspberrypi4-64.rpi-sdimg /media/sf_Downloads/console-image-raspberrypi4-64.rpi-sdimg
 
+# compute module rpiboot
+```
+on Linux
+To set up software on a Linux host device:
+
+Run the following command to install rpiboot:
+
+sudo apt install rpiboot
+Connect the IO Board to power.
+
+Then, run rpiboot:
+
+sudo rpiboot
+After a few seconds, the Compute Module should appear as a mass storage device. Check the /dev/ directory, likely /dev/sda or /dev/sdb, for the device. Alternatively, run lsblk and search for a device with a storage capacity that matches the capacity of your Compute Module.
+```
 
 # Flashing the sd image
 
