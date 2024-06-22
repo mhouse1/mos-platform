@@ -18,5 +18,5 @@
   <!-- added pytest packages to python3 install -->
   <!-- <project remote="mhouse1" revision="e55402441790512ce1ad145976a821617dae9188" name="meta-rpi64" path="sources/meta-rpi64"/> -->
   <!-- updates linux kernel, updates rpi firwmare 6/22/24-->
-  <project remote="mhouse1" revision="dunfell" name="meta-rpi64" path="sources/meta-rpi64"/>
+  <project remote="mhouse1" revision="dunfell-rpi-fw-update" name="meta-rpi64" path="sources/meta-rpi64"/>
 </manifest>
