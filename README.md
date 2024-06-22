@@ -16,20 +16,14 @@ Custom Minimal OS (MOS) built using Yocto for the Raspberry Pi Compute Module 4
 * A series of packages must be installed to support the Yocto build
 ```
 sudo apt-get update
-sudo apt install git python3 gawk wget diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm autoconf libtool libglib2.0-dev libarchive-dev sed cvs subversion coreutils texi2html docbook-utils help2man make gcc g++ desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial automake groff curl lzop asciidoc u-boot-tools dos2unix mtd-utils pv libelf-dev zlib1g-dev
+sudo apt install git python3 gawk wget diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm autoconf libtool libglib2.0-dev libarchive-dev sed cvs subversion coreutils texi2html docbook-utils help2man make gcc g++ desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial automake groff curl lzop asciidoc u-boot-tools dos2unix mtd-utils pv libncurses5 libncurses5-dev libncursesw5-dev libelf-dev zlib1g-dev
 ```
-for kirkstone, dunfell on ubuntu 24.04
+
+for kirkstone
 ```
 sudo apt-get update
 sudo apt-get -y install lz4
 ```
-
-### Using ubuntu 24.04
-* 05/05/24 started building using 24.04 LTS (Noble Numbat)
-* libncurses5-dev libncursesw5-dev is not availe on 24.04
-* Ubuntu OS included python 3.12.3 
-
-
 
 ## Installing python3
 ```
@@ -70,17 +64,16 @@ Download MOS platform and sources listed in the default.xml file to a new projec
 ```
 mkdir mos1
 cd mos1
-repo init -u https://github.com/mhouse1/mos-platform -b dunfell
+repo init -u https://github.com/mhouse1/mos-platform -b <my_branch_name>
 repo sync
 ```
 
 At the end of the commands you have every metadata you need to start work with.
 The source code is checked out at `mos1/sources`.
 You can use any directory to host your build.
-I'm using `mos1/build` as build folder.
+As a personal favor I'm using `mos1/build` as build folder.
 
 To configure the build and use local.conf.sample to replace the local.conf:
-note: may not need to chmod setup file if cloning recent source with proper setup file mode
 ```
 chmod a+x .repo/manifests/setup
 .repo/manifests/setup
@@ -145,21 +138,6 @@ bitbake qt5-image
 * this mounts it with root permission so in ubuntu open terminal and su as root
 * run cp command to copy file from vbox to windows, for example: cp /home/terrafirma/dev-tools/mos/build/tmp/deploy/images/raspberrypi4-64/console-image-raspberrypi4-64.rpi-sdimg /media/sf_Downloads/console-image-raspberrypi4-64.rpi-sdimg
 
-# compute module rpiboot
-```
-on Linux
-To set up software on a Linux host device:
-
-Run the following command to install rpiboot:
-
-sudo apt install rpiboot
-Connect the IO Board to power.
-
-Then, run rpiboot:
-
-sudo rpiboot
-After a few seconds, the Compute Module should appear as a mass storage device. Check the /dev/ directory, likely /dev/sda or /dev/sdb, for the device. Alternatively, run lsblk and search for a device with a storage capacity that matches the capacity of your Compute Module.
-```
 
 # Flashing the sd image
 
@@ -186,4 +164,117 @@ it is faster to transfer the file from ubuntu to windows host and then use etche
 * set compute module to boot mode, connect to pc then run rpiboot.exe
 * flash the rpi-sdimg file using etcher (portable install balenaEtcher-Portable-1.18.11.exe works too).
 
+# building using a docker container
+run the "docker build ." command in the same directory as the Dockerfile
+```
+michael@michael-MacBookPro:~/dev-tools/poky-container$ docker build .
+[+] Building 26.9s (17/17) FINISHED                              docker:default
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 1.67kB                                     0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04            0.3s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [ 1/13] FROM docker.io/library/ubuntu:22.04@sha256:19478ce7fc2ffbce89  0.0s
+ => CACHED [ 2/13] RUN apt-get update && apt-get install -y git python3 g  0.0s
+ => [ 3/13] RUN apt-get update && apt-get install -y lz4 zstd              6.4s
+ => [ 4/13] RUN apt update && apt install -y   curl   gpg                  4.6s 
+ => [ 5/13] RUN curl -fsSL https://cli.github.com/packages/githubcli-arch  0.6s 
+ => [ 6/13] RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/u  0.4s 
+ => [ 7/13] RUN apt update && apt install -y gh;                           8.4s 
+ => [ 8/13] RUN mkdir -p ~/bin                                             0.4s 
+ => [ 9/13] RUN curl -o ~/bin/repo http://commondatastorage.googleapis.co  0.6s 
+ => [10/13] RUN chmod a+x ~/bin/repo                                       0.5s 
+ => [11/13] RUN groupadd -g 1000 dev             && useradd -u 1000 -g de  0.5s 
+ => [12/13] RUN locale-gen en_US.UTF-8                                     2.5s 
+ => [13/13] WORKDIR /home/dev                                              0.2s 
+ => exporting to image                                                     1.1s 
+ => => exporting layers                                                    1.1s 
+ => => writing image sha256:e69cfaaab8aa0525e5833dd17fb96460335bc1449696c  0.0s
+michael@michael-MacBookPro:~/dev-tools/poky-container$ docker run -it -v yocto-volume:/home/dev sha256:e69cfaaab8aa0525e5833dd17fb96460335bc1449696c 
+dev@b242783491f5:~$ cd mos1
+dev@b242783491f5:~/mos1$ source sources/poky/oe-init-build-env build
 
+### Shell environment set up for builds. ###
+...
+...
+dev@b242783491f5:~/mos1$ whoami
+dev
+dev@b242783491f5:~/mos1$ cat /etc/os-release 
+PRETTY_NAME="Ubuntu 22.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.4 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+dev@b242783491f5:~/mos1$ python --version
+bash: python: command not found
+dev@b242783491f5:~/mos1$ python3 --version
+Python 3.10.12
+dev@b242783491f5:~/mos1$ curl
+curl: try 'curl --help' or 'curl --manual' for more information
+dev@b242783491f5:~/mos1$ curl --version
+curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 z
+```
+## accessing files from docker
+on Ubuntu go to:
+```
+/var/lib/docker/volumes/[volume_name]/_data
+```
+
+# Successful build
+```
+dev@8655c0f70b79:~/mos1/build$ bitbake py3qt-image
+Loading cache: 100% |############################################| Time: 0:00:01
+Loaded 3577 entries from dependency cache.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "1.46.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi4-64"
+DISTRO               = "poky"
+DISTRO_VERSION       = "3.1.33"
+TUNE_FEATURES        = "aarch64 cortexa72 crc crypto"
+TARGET_FPU           = ""
+meta                 
+meta-poky            = "HEAD:63d05fc061006bf1a88630d6d91cdc76ea33fbf2"
+meta-oe              
+meta-multimedia      
+meta-networking      
+meta-perl            
+meta-python          = "HEAD:01358b6d705071cc0ac5aefa7670ab235709729a"
+meta-qt5             = "HEAD:5ef3a0ffd3324937252790266e2b2e64d33ef34f"
+meta-raspberrypi     = "HEAD:2081e1bb9a44025db7297bfd5d024977d42191ed"
+meta-security        = "HEAD:eb631c12be585d18beddbb41f6035772b2cb17d5"
+meta-jumpnow         = "HEAD:b3995636741be0d219a50035c98ded8b48590888"
+meta-rpi64           = "HEAD:623e233667fcdd328b5678517340e3c3e5561f1f"
+
+```
+
+## Flashing wic.bz2
+```
+michael@michael-MacBookPro:~/dev-tools/poky-container/usbboot$ sudo ./rpiboot
+RPIBOOT: build-date Jun 15 2024 version 20240422~085300 4a3d3117
+Waiting for BCM2835/6/7/2711/2712...
+Loading embedded: bootcode4.bin
+Sending bootcode.bin
+Successful read 4 bytes 
+Waiting for BCM2835/6/7/2711/2712...
+Loading embedded: bootcode4.bin
+Second stage boot server
+Cannot open file config.txt
+Cannot open file pieeprom.sig
+Loading embedded: start4.elf
+File read: start4.elf
+Cannot open file fixup4.dat
+Second stage boot server done
+michael@michael-MacBookPro:~/dev-tools/poky-container/usbboot$ sudo dd if='/home/michael/Downloads/console-image-raspberrypi4-64-20240615013244.rootfs.wic.bz2' of=/dev/sdb status=progress
+```
