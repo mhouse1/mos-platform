@@ -135,3 +135,41 @@ sudo dd if=/home/username/Downloads/mhouseos.rpi-sdimg of=/dev/sdb status=progre
 rootfs is not image. It is tar archive with content of root filesystem and you are supposed to prepare bootloader and kernel on your SD card yourself and configure them to use root partition.
 
 ```
+
+# Stable build
+built on 04/21/24
+```
+~/dev-tools/mos/build$ bitbake console-image
+Loading cache: 100% |############################################| Time: 0:00:00
+Loaded 4260 entries from dependency cache.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "2.0.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi4-64"
+DISTRO               = "poky"
+DISTRO_VERSION       = "4.0.17"
+TUNE_FEATURES        = "aarch64 armv8a crc cortexa72"
+TARGET_FPU           = ""
+meta                 
+meta-poky            = "HEAD:dc98af7cabb7b5db6bfa82ef78baf9d7fd7827d2"
+meta-oe              
+meta-multimedia      
+meta-networking      
+meta-perl            
+meta-python          = "HEAD:8bb16533532b6abc2eded7d9961ab2a108fd7a5b"
+meta-qt5             = "HEAD:644ebf220245bdc06e7696ccc90acc97a0dd2566"
+meta-raspberrypi     = "HEAD:9dc6673d41044f1174551120ce63501421dbcd85"
+meta-security        = "HEAD:1a3e42cedbd94ca73be45800d0e902fec35d0f0f"
+meta-cm4             = "HEAD:8dab800494d60e167722b907183811360de47d22"
+meta-rauc            = "HEAD:1ce846097f74acfdd15fef0d64a6fd3eeee3d6f5"
+meta-rauc-raspberrypi = "HEAD:a24bd25bc1f871782fc956f9a3104256cac16691"
+
+Initialising tasks: 100% |#######################################| Time: 0:00:01
+Sstate summary: Wanted 483 Local 91 Mirrors 0 Missed 392 Current 1031 (18% match, 74% complete)
+NOTE: Executing Tasks
+NOTE: Tasks Summary: Attempted 3939 tasks of which 3147 didn't need to be rerun and all succeeded.
+```
