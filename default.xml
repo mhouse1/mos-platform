@@ -15,7 +15,8 @@
   <project remote="yocto" revision="kirkstone" name="meta-security" path="sources/meta-security"/>
   <!-- <project remote="yocto" revision="kirkstone" name="meta-raspberrypi" path="sources/meta-raspberrypi"/> -->
   <project remote="agherzan" revision="kirkstone" name="meta-raspberrypi" path="sources/meta-raspberrypi"/>
-  <project remote="mhouse1" revision="kirkstone" name="meta-cm4" path="sources/meta-cm4"/>
+<!--   meta-cm4 From branch kirkstone-fix -->
+  <project remote="mhouse1" revision="8d7c2eaf4d827832a4a360adf4379e5dd6f71a38" name="meta-cm4" path="sources/meta-cm4"/>
   <project remote="rauc" revision="kirkstone" name="meta-rauc" path="sources/meta-rauc"/>
   <project remote="anavi" revision="kirkstone" name="meta-rauc-community" path="sources/meta-rauc-community"/>
 </manifest>
