@@ -1,6 +1,9 @@
 # mos-platform
 Custom Minimal OS (MOS) built using Yocto for the Raspberry Pi Compute Module 4
 
+branched off of 0.0.1
+builds kirkstone
+
 # MOS Features
 * Python3
 * PyQt5
