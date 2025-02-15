@@ -1,0 +1,6 @@
+# check the version of python package installed
+# (run with bash not powershell): pip freeze | grep pytest
+paramiko==3.5.0 # required for ssh
+pytest==8.3.4 # 12/27/24
+pyserial==3.5 # 1/1/25
+scp==0.15.0 # 1/1/25
